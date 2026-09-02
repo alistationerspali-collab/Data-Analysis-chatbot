@@ -1,0 +1,9 @@
+groq
+sqlalchemy
+pyodbc
+fastapi
+uvicorn
+python-dotenv
+pydantic-settings
+streamlit
+pytest
