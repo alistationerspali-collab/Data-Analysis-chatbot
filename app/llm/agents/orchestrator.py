@@ -4,15 +4,14 @@ from app.llm.agents.critic_agent import review_analysis
 from app.config import settings
 
 
-def run_analyst_critic_loop(question: str, schema: str) -> dict:
+def run_analyst_critic_loop(question: str, schema: str, history: list[dict] = None) -> dict:
     feedback = None
     last_output = None
 
     for i in range(settings.max_critic_iterations):
-        analyst_output = generate_analysis(question, schema, feedback)
+        analyst_output = generate_analysis(question, schema, history=history, feedback=feedback)
         last_output = analyst_output
 
-        # If the analyst correctly declined (sql is null), no need to critique further
         if not analyst_output.get("sql"):
             return {"result": analyst_output, "iterations": i + 1, "approved": True, "declined": True}
 

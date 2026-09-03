@@ -1,0 +1,44 @@
+[
+  {
+    "id": "q1",
+    "question": "Show me top 5 items by sales amount",
+    "category": "item_sales",
+    "expected_chart_type": "bar",
+    "should_decline": false
+  },
+  {
+    "id": "q2",
+    "question": "What are the total sales for the group Series EM Wake Up",
+    "category": "group_sales",
+    "expected_chart_type": "none",
+    "should_decline": false
+  },
+  {
+    "id": "q3",
+    "question": "What is the net outstanding change for Ali Stationery Pali between 1 April 2025 and 31 March 2026",
+    "category": "outstanding",
+    "expected_chart_type": "table",
+    "should_decline": false
+  },
+  {
+    "id": "q4",
+    "question": "Show me salesman-wise sales",
+    "category": "unsupported",
+    "expected_chart_type": "none",
+    "should_decline": true
+  },
+  {
+    "id": "q5",
+    "question": "What is the absolute outstanding balance for Ali Stationery Pali",
+    "category": "unsupported",
+    "expected_chart_type": "none",
+    "should_decline": true
+  },
+  {
+    "id": "q6",
+    "question": "Give me the Trial Balance for this year",
+    "category": "unsupported",
+    "expected_chart_type": "none",
+    "should_decline": true
+  }
+]
