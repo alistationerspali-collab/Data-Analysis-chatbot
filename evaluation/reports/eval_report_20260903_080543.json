@@ -1,0 +1,81 @@
+{
+  "total_cases": 6,
+  "semantic_accuracy": 1.0,
+  "decline_accuracy": 1.0,
+  "chart_type_match_rate": 0.5,
+  "avg_iterations": 0.5,
+  "results": [
+    {
+      "id": "q1",
+      "question": "Show me top 5 items by sales amount",
+      "category": "item_sales",
+      "should_decline": false,
+      "sql_executed": true,
+      "decline_correct": true,
+      "chart_type_match": true,
+      "iterations": 1,
+      "semantic_correct": true,
+      "judge_reason": "The query aggregates sales amounts (SUM(t.Value3)) per item, orders them descending, and limits the output to the top 5 rows, which directly satisfies the request for the top 5 items by sales amount."
+    },
+    {
+      "id": "q2",
+      "question": "What are the total sales for the group Series EM Wake Up",
+      "category": "group_sales",
+      "should_decline": false,
+      "sql_executed": true,
+      "decline_correct": true,
+      "chart_type_match": true,
+      "iterations": 1,
+      "semantic_correct": true,
+      "judge_reason": "The query recursively finds all items under the group named 'Series EM Wake Up' and sums the Value3 field (presumably sales) from Tran2 for those items, which correctly computes the total sales for that group."
+    },
+    {
+      "id": "q3",
+      "question": "What is the net outstanding change for Ali Stationery Pali between 1 April 2025 and 31 March 2026",
+      "category": "outstanding",
+      "should_decline": false,
+      "sql_executed": true,
+      "decline_correct": true,
+      "chart_type_match": true,
+      "iterations": 1,
+      "semantic_correct": true,
+      "judge_reason": "The query filters transactions for Ali Stationery Pali within the exact date range, groups by the party, and aggregates the Value1 field (negated as required) to produce a single net outstanding change figure, which matches the question's request."
+    },
+    {
+      "id": "q4",
+      "question": "Show me salesman-wise sales",
+      "category": "unsupported",
+      "should_decline": true,
+      "sql_executed": false,
+      "decline_correct": true,
+      "chart_type_match": false,
+      "iterations": null,
+      "semantic_correct": true,
+      "judge_reason": "Salesman-wise sales cannot be generated because salesman data is not populated on vouchers in this Busy Accounting installation, as per the explicit limitations."
+    },
+    {
+      "id": "q5",
+      "question": "What is the absolute outstanding balance for Ali Stationery Pali",
+      "category": "unsupported",
+      "should_decline": true,
+      "sql_executed": false,
+      "decline_correct": true,
+      "chart_type_match": false,
+      "iterations": null,
+      "semantic_correct": true,
+      "judge_reason": "The schema only supports net movement (outstanding change) over a date range, not absolute outstanding balances. Therefore a query for the absolute balance cannot be generated."
+    },
+    {
+      "id": "q6",
+      "question": "Give me the Trial Balance for this year",
+      "category": "unsupported",
+      "should_decline": true,
+      "sql_executed": false,
+      "decline_correct": true,
+      "chart_type_match": false,
+      "iterations": null,
+      "semantic_correct": true,
+      "judge_reason": "Trial Balance queries are not supported in the verified schema; the necessary mappings are not available."
+    }
+  ]
+}

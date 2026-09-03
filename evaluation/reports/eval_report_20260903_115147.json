@@ -1,0 +1,105 @@
+{
+  "total_cases": 8,
+  "semantic_accuracy": 1.0,
+  "decline_accuracy": 1.0,
+  "chart_type_match_rate": 0.875,
+  "avg_iterations": 0.5,
+  "results": [
+    {
+      "id": "q1",
+      "question": "Show me top 5 items by sales amount",
+      "category": "item_sales",
+      "should_decline": false,
+      "sql_executed": true,
+      "decline_correct": true,
+      "chart_type_match": true,
+      "iterations": 1,
+      "semantic_correct": true,
+      "judge_reason": "The query follows the verified schema: it joins Tran2 to Master1 on MasterCode1, filters MasterType=6 (items), uses Value1<0 to capture sales (negative quantity per sign convention), sums Value3 (amount) per item, orders by total sales descending, and limits to the top 5. This matches the required definition of sales amount without relying on unsupported columns or assumptions."
+    },
+    {
+      "id": "q2",
+      "question": "What are the total sales for the group Series EM Wake Up",
+      "category": "group_sales",
+      "should_decline": false,
+      "sql_executed": true,
+      "decline_correct": true,
+      "chart_type_match": false,
+      "iterations": 1,
+      "semantic_correct": true,
+      "judge_reason": "The query follows the verified group-wise sales pattern: it builds a recursive CTE starting from items (MasterType=6), walks up the ParentGrp hierarchy to capture all ancestors, then sums Value3 (Amount) for transactions whose item\u2019s ancestor name matches the specified group 'Series EM Wake Up'. This aligns with the schema definitions and sign conventions, and no unsupported assumptions are made."
+    },
+    {
+      "id": "q3",
+      "question": "What is the net outstanding change for Ali Stationery Pali between 1 April 2025 and 31 March 2026",
+      "category": "outstanding",
+      "should_decline": false,
+      "sql_executed": true,
+      "decline_correct": true,
+      "chart_type_match": true,
+      "iterations": 1,
+      "semantic_correct": true,
+      "judge_reason": "The query follows the verified pattern for net outstanding change: it selects the party (MasterType=2) named 'Ali Stationery Pali', applies the -SUM(Value1) sign convention, filters the date range 2025-04-01 to 2026-03-31, groups by the party name, and orders by the result. The extra TOP 200 and NOLOCK hints do not affect correctness."
+    },
+    {
+      "id": "q4",
+      "question": "Show me salesman-wise sales",
+      "category": "unsupported",
+      "should_decline": true,
+      "sql_executed": false,
+      "decline_correct": true,
+      "chart_type_match": true,
+      "iterations": null,
+      "semantic_correct": true,
+      "judge_reason": "Salesman-wise sales cannot be generated because salesman data (MasterType=19) is not linked to any voucher transactions in this Busy Accounting installation, as per the explicit limitations."
+    },
+    {
+      "id": "q5",
+      "question": "What is the absolute outstanding balance for Ali Stationery Pali",
+      "category": "unsupported",
+      "should_decline": true,
+      "sql_executed": false,
+      "decline_correct": true,
+      "chart_type_match": true,
+      "iterations": null,
+      "semantic_correct": true,
+      "judge_reason": "The request is for an absolute outstanding balance, which requires the true opening balance plus movements. The schema only supports net outstanding movement over a date range; absolute balances are not available, so we cannot generate a query for this."
+    },
+    {
+      "id": "q6",
+      "question": "Give me the Trial Balance for this year",
+      "category": "unsupported",
+      "should_decline": true,
+      "sql_executed": false,
+      "decline_correct": true,
+      "chart_type_match": true,
+      "iterations": null,
+      "semantic_correct": true,
+      "judge_reason": "Trial Balance reports are not supported yet; the schema lacks verified mappings for generating such a report."
+    },
+    {
+      "id": "q7",
+      "question": "What is the net stock movement for SPB 8 between 1 April 2025 and 31 March 2026",
+      "category": "stock_movement",
+      "should_decline": false,
+      "sql_executed": true,
+      "decline_correct": true,
+      "chart_type_match": true,
+      "iterations": 1,
+      "semantic_correct": true,
+      "judge_reason": "The query follows the verified schema: it joins Tran2 to Master1, filters MasterType=6 (items), selects the specific item name 'SPB 8', restricts the Date to the requested range (1 Apr 2025 to 31 Mar 2026), and sums Value1 which per the schema represents the quantity movement for items. The SUM(Value1) directly gives the net stock movement (no sign inversion needed). The extra TOP 200 and NOLOCK hints do not affect correctness. Hence the SQL correctly and completely answers the question."
+    },
+    {
+      "id": "q8",
+      "question": "What is the current stock quantity for SPB 8",
+      "category": "unsupported",
+      "should_decline": true,
+      "sql_executed": false,
+      "decline_correct": true,
+      "chart_type_match": true,
+      "iterations": null,
+      "semantic_correct": true,
+      "judge_reason": "The request asks for the current stock quantity, which requires an absolute/current stock level. The schema only supports net stock movement over a date range, not absolute stock balances, so this report cannot be generated."
+    }
+  ]
+}

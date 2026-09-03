@@ -1,0 +1,81 @@
+{
+  "total_cases": 6,
+  "semantic_accuracy": 0.6666666666666666,
+  "decline_accuracy": 1.0,
+  "chart_type_match_rate": 0.8333333333333334,
+  "avg_iterations": 0.5,
+  "results": [
+    {
+      "id": "q1",
+      "question": "Show me top 5 items by sales amount",
+      "category": "item_sales",
+      "should_decline": false,
+      "sql_executed": true,
+      "decline_correct": true,
+      "chart_type_match": true,
+      "iterations": 1,
+      "semantic_correct": true,
+      "judge_reason": "The query aggregates sales (SUM(Value3)) per item, filters to item master type, orders by total sales descending, and limits to the top 5 rows, which directly satisfies the request for the top 5 items by sales amount."
+    },
+    {
+      "id": "q2",
+      "question": "What are the total sales for the group Series EM Wake Up",
+      "category": "group_sales",
+      "should_decline": false,
+      "sql_executed": true,
+      "decline_correct": true,
+      "chart_type_match": true,
+      "iterations": 1,
+      "semantic_correct": false,
+      "judge_reason": "The query only builds a hierarchy of group records (MasterType = 6) and then joins transactions on MasterCode1 = ItemCode, which means it only matches transactions that reference group codes directly. In most Busy Accounting schemas, sales are recorded against item/product codes (different MasterType), not group codes. Therefore the query will miss the sales of the actual items that belong to the 'Series EM Wake Up' group, resulting in an incomplete total. A correct solution would need to include the item records (e.g., MasterType = 1) in the hierarchy or join to the item table to capture all relevant sales."
+    },
+    {
+      "id": "q3",
+      "question": "What is the net outstanding change for Ali Stationery Pali between 1 April 2025 and 31 March 2026",
+      "category": "outstanding",
+      "should_decline": false,
+      "sql_executed": true,
+      "decline_correct": true,
+      "chart_type_match": false,
+      "iterations": 1,
+      "semantic_correct": false,
+      "judge_reason": "The query filters the correct party and date range, but it applies a negation to the sum of Value1 (\u2011SUM(t.Value1)). Unless the database stores outstanding amounts with opposite sign conventions, this will invert the sign of the net change and produce an incorrect result. The net outstanding change should be calculated as SUM(t.Value1) (or with the appropriate sign handling based on schema), not the negative of that sum. Therefore the SQL does not correctly answer the question."
+    },
+    {
+      "id": "q4",
+      "question": "Show me salesman-wise sales",
+      "category": "unsupported",
+      "should_decline": true,
+      "sql_executed": false,
+      "decline_correct": true,
+      "chart_type_match": true,
+      "iterations": null,
+      "semantic_correct": true,
+      "judge_reason": "Salesman-wise sales cannot be generated because salesman data is not populated on vouchers in this Busy Accounting installation, as per the explicit limitations."
+    },
+    {
+      "id": "q5",
+      "question": "What is the absolute outstanding balance for Ali Stationery Pali",
+      "category": "unsupported",
+      "should_decline": true,
+      "sql_executed": false,
+      "decline_correct": true,
+      "chart_type_match": true,
+      "iterations": null,
+      "semantic_correct": true,
+      "judge_reason": "The request is for an absolute outstanding balance, which is not available in the verified schema. Only net movement over a date range can be calculated. Therefore a query cannot be generated for this request."
+    },
+    {
+      "id": "q6",
+      "question": "Give me the Trial Balance for this year",
+      "category": "unsupported",
+      "should_decline": true,
+      "sql_executed": false,
+      "decline_correct": true,
+      "chart_type_match": true,
+      "iterations": null,
+      "semantic_correct": true,
+      "judge_reason": "Trial Balance queries are not supported in the verified schema; the necessary mappings are not available."
+    }
+  ]
+}

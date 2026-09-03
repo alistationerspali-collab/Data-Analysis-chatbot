@@ -24,21 +24,35 @@
     "id": "q4",
     "question": "Show me salesman-wise sales",
     "category": "unsupported",
-    "expected_chart_type": "none",
+    "expected_chart_type": null,
     "should_decline": true
   },
   {
     "id": "q5",
     "question": "What is the absolute outstanding balance for Ali Stationery Pali",
     "category": "unsupported",
-    "expected_chart_type": "none",
+    "expected_chart_type": null,
     "should_decline": true
   },
   {
     "id": "q6",
     "question": "Give me the Trial Balance for this year",
     "category": "unsupported",
-    "expected_chart_type": "none",
+    "expected_chart_type": null,
+    "should_decline": true
+  },
+  {
+    "id": "q7",
+    "question": "What is the net stock movement for SPB 8 between 1 April 2025 and 31 March 2026",
+    "category": "stock_movement",
+    "expected_chart_type": "table",
+    "should_decline": false
+  },
+  {
+    "id": "q8",
+    "question": "What is the current stock quantity for SPB 8",
+    "category": "unsupported",
+    "expected_chart_type": null,
     "should_decline": true
   }
 ]
