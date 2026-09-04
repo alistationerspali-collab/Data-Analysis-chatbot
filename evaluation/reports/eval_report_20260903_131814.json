@@ -1,0 +1,105 @@
+{
+  "total_cases": 8,
+  "semantic_accuracy": 0.0,
+  "decline_accuracy": 0.0,
+  "chart_type_match_rate": 0.0,
+  "avg_iterations": 0.0,
+  "results": [
+    {
+      "id": "q1",
+      "question": "Show me top 5 items by sales amount",
+      "category": "item_sales",
+      "should_decline": false,
+      "sql_executed": false,
+      "decline_correct": false,
+      "chart_type_match": false,
+      "semantic_correct": false,
+      "judge_reason": "Exception: Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m1gfwtz0emtrvzn83q8v34nq` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 197947, Requested 2647. Please try again in 4m16.608s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
+      "iterations": null
+    },
+    {
+      "id": "q2",
+      "question": "What are the total sales for the group Series EM Wake Up",
+      "category": "group_sales",
+      "should_decline": false,
+      "sql_executed": false,
+      "decline_correct": false,
+      "chart_type_match": false,
+      "semantic_correct": false,
+      "judge_reason": "Exception: Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m1gfwtz0emtrvzn83q8v34nq` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 197935, Requested 2660. Please try again in 4m17.04s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
+      "iterations": null
+    },
+    {
+      "id": "q3",
+      "question": "What is the net outstanding change for Ali Stationery Pali between 1 April 2025 and 31 March 2026",
+      "category": "outstanding",
+      "should_decline": false,
+      "sql_executed": false,
+      "decline_correct": false,
+      "chart_type_match": false,
+      "semantic_correct": false,
+      "judge_reason": "Exception: Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m1gfwtz0emtrvzn83q8v34nq` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 197923, Requested 2644. Please try again in 4m4.944s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
+      "iterations": null
+    },
+    {
+      "id": "q4",
+      "question": "Show me salesman-wise sales",
+      "category": "unsupported",
+      "should_decline": true,
+      "sql_executed": false,
+      "decline_correct": false,
+      "chart_type_match": false,
+      "semantic_correct": false,
+      "judge_reason": "Exception: Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m1gfwtz0emtrvzn83q8v34nq` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 197911, Requested 2623. Please try again in 3m50.688s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
+      "iterations": null
+    },
+    {
+      "id": "q5",
+      "question": "What is the absolute outstanding balance for Ali Stationery Pali",
+      "category": "unsupported",
+      "should_decline": true,
+      "sql_executed": false,
+      "decline_correct": false,
+      "chart_type_match": false,
+      "semantic_correct": false,
+      "judge_reason": "Exception: Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m1gfwtz0emtrvzn83q8v34nq` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 197900, Requested 2630. Please try again in 3m48.96s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
+      "iterations": null
+    },
+    {
+      "id": "q6",
+      "question": "Give me the Trial Balance for this year",
+      "category": "unsupported",
+      "should_decline": true,
+      "sql_executed": false,
+      "decline_correct": false,
+      "chart_type_match": false,
+      "semantic_correct": false,
+      "judge_reason": "Exception: Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m1gfwtz0emtrvzn83q8v34nq` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 197887, Requested 2667. Please try again in 3m59.328s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
+      "iterations": null
+    },
+    {
+      "id": "q7",
+      "question": "What is the net stock movement for SPB 8 between 1 April 2025 and 31 March 2026",
+      "category": "stock_movement",
+      "should_decline": false,
+      "sql_executed": false,
+      "decline_correct": false,
+      "chart_type_match": false,
+      "semantic_correct": false,
+      "judge_reason": "Exception: Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m1gfwtz0emtrvzn83q8v34nq` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 197874, Requested 2643. Please try again in 3m43.344s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
+      "iterations": null
+    },
+    {
+      "id": "q8",
+      "question": "What is the current stock quantity for SPB 8",
+      "category": "unsupported",
+      "should_decline": true,
+      "sql_executed": false,
+      "decline_correct": false,
+      "chart_type_match": false,
+      "semantic_correct": false,
+      "judge_reason": "Exception: Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m1gfwtz0emtrvzn83q8v34nq` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 197863, Requested 2651. Please try again in 3m42.047999999s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
+      "iterations": null
+    }
+  ]
+}

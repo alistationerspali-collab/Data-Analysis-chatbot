@@ -1,0 +1,105 @@
+{
+  "total_cases": 8,
+  "semantic_accuracy": 0.625,
+  "decline_accuracy": 0.625,
+  "chart_type_match_rate": 0.5,
+  "avg_iterations": 0.375,
+  "results": [
+    {
+      "id": "q1",
+      "question": "Show me top 5 items by sales amount",
+      "category": "item_sales",
+      "should_decline": false,
+      "sql_executed": true,
+      "decline_correct": true,
+      "chart_type_match": true,
+      "iterations": 2,
+      "semantic_correct": true,
+      "judge_reason": "The query follows the verified schema: it joins Tran2 to Master1 on MasterCode1, filters MasterType=6 (items), uses Value1<0 to capture sales (negative quantity indicates stock outflow/sale), sums Value3 (the amount) per item, orders by total sales descending, and limits to the top 5. This matches the schema's sign conventions and column meanings without relying on unsupported data."
+    },
+    {
+      "id": "q2",
+      "question": "What are the total sales for the group Series EM Wake Up",
+      "category": "group_sales",
+      "should_decline": false,
+      "sql_executed": false,
+      "decline_correct": true,
+      "chart_type_match": false,
+      "iterations": null,
+      "semantic_correct": true,
+      "judge_reason": "This query took too long to run and was safely stopped to avoid affecting Busy. Try asking a more specific or narrower question."
+    },
+    {
+      "id": "q3",
+      "question": "What is the net outstanding change for Ali Stationery Pali between 1 April 2025 and 31 March 2026",
+      "category": "outstanding",
+      "should_decline": false,
+      "sql_executed": true,
+      "decline_correct": true,
+      "chart_type_match": true,
+      "iterations": 1,
+      "semantic_correct": true,
+      "judge_reason": "The query follows the verified Outstanding Analysis pattern: it joins Tran2 to Master1 on MasterCode1, filters MasterType=2, restricts to the specified party name, applies the correct date range, and uses -SUM(Value1) to compute NetOutstandingChange per the sign convention. The extra TOP 200 and NOLOCK hints do not affect correctness."
+    },
+    {
+      "id": "q4",
+      "question": "Show me salesman-wise sales",
+      "category": "unsupported",
+      "should_decline": true,
+      "sql_executed": false,
+      "decline_correct": true,
+      "chart_type_match": true,
+      "iterations": null,
+      "semantic_correct": true,
+      "judge_reason": "Salesman-wise sales cannot be generated because salesman data (MasterType=19) is not linked to any voucher transactions in this Busy Accounting installation."
+    },
+    {
+      "id": "q5",
+      "question": "What is the absolute outstanding balance for Ali Stationery Pali",
+      "category": "unsupported",
+      "should_decline": true,
+      "sql_executed": false,
+      "decline_correct": true,
+      "chart_type_match": true,
+      "iterations": null,
+      "semantic_correct": true,
+      "judge_reason": "Absolute outstanding balance is not available in this schema; only net outstanding change over a date range can be calculated, so the requested report cannot be generated."
+    },
+    {
+      "id": "q6",
+      "question": "Give me the Trial Balance for this year",
+      "category": "unsupported",
+      "should_decline": true,
+      "sql_executed": false,
+      "decline_correct": false,
+      "chart_type_match": false,
+      "semantic_correct": false,
+      "judge_reason": "Exception: Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m1gfwtz0emtrvzn83q8v34nq` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 198223, Requested 3017. Please try again in 8m55.679999999s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
+      "iterations": null
+    },
+    {
+      "id": "q7",
+      "question": "What is the net stock movement for SPB 8 between 1 April 2025 and 31 March 2026",
+      "category": "stock_movement",
+      "should_decline": false,
+      "sql_executed": false,
+      "decline_correct": false,
+      "chart_type_match": false,
+      "semantic_correct": false,
+      "judge_reason": "Exception: Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m1gfwtz0emtrvzn83q8v34nq` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 198201, Requested 3034. Please try again in 8m53.52s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
+      "iterations": null
+    },
+    {
+      "id": "q8",
+      "question": "What is the current stock quantity for SPB 8",
+      "category": "unsupported",
+      "should_decline": true,
+      "sql_executed": false,
+      "decline_correct": false,
+      "chart_type_match": false,
+      "semantic_correct": false,
+      "judge_reason": "Exception: Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m1gfwtz0emtrvzn83q8v34nq` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 198189, Requested 2789. Please try again in 7m2.496s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
+      "iterations": null
+    }
+  ]
+}
